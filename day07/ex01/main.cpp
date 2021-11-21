@@ -4,24 +4,21 @@ void ft_putchar(char & c)
 	std::cout << c;
 }
 
+void ft_putnbr(float & nbr)
+{
+	std::cout << nbr << std::endl;
+}
+
 int main()
 {
 	char phrase[] = "Salut";
 	float tab[] = {1.1f, 2.1f, 3.1f, 4.1f, 5.1f};
-	int nbr = 5;
-   	iter(phrase, nbr, &ft_putchar);
+   	iter(phrase, 5, &ft_putchar);
+	std::cout << std::endl;
 
-	std::cout << std::endl << tab[0] << " ";
-	std::cout << tab[1] << " ";
-	std::cout << tab[2] << " ";
-	std::cout << tab[3] << " ";
-	std::cout << tab[4] << std::endl;
-	std::cout << "INCREMENT: " << std::endl;
+	iter(tab, 5, &ft_putnbr);
+	std::cout << "INCREMENT with template function incre: " << std::endl;
 	iter(tab, 5, &incre);
-	std::cout << tab[0] << " ";
-	std::cout << tab[1] << " ";
-	std::cout << tab[2] << " ";
-	std::cout << tab[3] << " ";
-	std::cout << tab[4] << std::endl;
+	iter(tab, 5, &ft_putnbr);
     
 }
