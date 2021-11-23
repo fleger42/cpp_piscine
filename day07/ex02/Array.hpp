@@ -1,9 +1,16 @@
 #include <iostream>
-
+#include <exception>
 template <typename T>
 class Array
 {
 	public:
+		class OutOfBound : public std::exception
+		{
+			const char *what() const throw()
+			{
+				return("Out of bound exception !");
+			}
+		};
 		typedef Array<T> array_type;
 		Array() : _size(0), _container(NULL) {};
 		Array(unsigned int n) : _size(n), _container(new T[n]) {};
@@ -33,7 +40,7 @@ class Array
 		T & operator[](int nbr)
 		{
 			if(nbr < 0 || static_cast<unsigned int>(nbr) >= _size)
-				throw std::exception();
+				throw OutOfBound();
 			return(_container[nbr]);
 		}
 		int size()
